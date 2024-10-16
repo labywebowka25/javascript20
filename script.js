@@ -22,14 +22,18 @@
         console.log(array);
         answer.innerHTML = JSON.stringify(array);
       });
-    
   });
 
-  cw2.addEventListener("click", function () {
-    //TODO
+  cw2.addEventListener("click", async function () {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/posts",
+    )
+      .then((response) => response.json())
+      .then((array) => {
+        console.log(array[0]);
+        answer.innerHTML = JSON.stringify(array[0]);
+      });
   });
 
-  cw3.addEventListener("click", function () {
-    //TODO
-  });
+  cw3.addEventListener("click", function () {});
 })();
