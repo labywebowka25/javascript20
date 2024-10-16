@@ -25,15 +25,26 @@
   });
 
   cw2.addEventListener("click", async function () {
-    const response = await fetch(
-      "https://jsonplaceholder.typicode.com/posts",
-    )
+    const id = 0;
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((array) => {
-        console.log(array[0]);
-        answer.innerHTML = JSON.stringify(array[0]);
+        console.log(array[id]);
+        answer.innerHTML = JSON.stringify(array[id]);
       });
   });
 
-  cw3.addEventListener("click", function () {});
+  cw3.addEventListener("click", async function () {
+    answer.innerHTML = "Processing...";
+    fetch("https://jsonplaceholder.typicode.com/posts"), {
+      method: "POST",
+      body: JSON.stringify({
+        title: "Nowy post",
+        body: "Tresc",
+        userId: 1,
+      })
+      .then((response) => response.json())
+      .then((post) => {console.log(post));
+    answer.innerHTML = "Dodano nowy post o ID: ${post.id}"
+  });
 })();
